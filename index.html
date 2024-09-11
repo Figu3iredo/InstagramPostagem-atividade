@@ -17,24 +17,34 @@
 
 <body>
   <main>
-
     <div class="post-container">
 
       <div class="post-header">
-        <div></div>
-        <span>Zima_Blue</span>
+        <div>
+          <img title="Avatar image"
+            src="https://www.petsupport.com.br/wp-content/uploads/2021/09/necessidades-dos-gatos-1.jpg">
+        </div>
+        <span>username</span>
       </div>
 
       <div class="post-image">
-        <img title="post-image"
-          src="https://i1.sndcdn.com/artworks-8OBzhaNoiX6AAyCs-fC1usQ-t500x500.jpg">
+        <img title="Post image"
+          src="https://www.petsupport.com.br/wp-content/uploads/2021/09/necessidades-dos-gatos-1.jpg">
       </div>
 
       <div class="post-icons">
         <div>
-          <i class="fa fa-heart-o"></i>
-          <i class="fa fa-comment-o"></i>
-          <i class="fa fa-paper-plane-o"></i>
+          <div id="btn-like" onclick="like()">
+            <i class="fa fa-heart-o"></i>
+          </div>
+
+          <div>
+            <i class="fa fa-comment-o"></i>
+          </div>
+
+          <div>
+            <i class="fa fa-paper-plane-o"></i>
+          </div>
         </div>
 
         <i class="fa fa-bookmark-o"></i>
@@ -47,9 +57,9 @@
 
       <div class="post-description">descricao</div>
     </div>
-
   </main>
 
+  <script type="module" src="./index.ts"></script>
 </body>
 
 </html>
