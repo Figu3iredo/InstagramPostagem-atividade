@@ -24,23 +24,22 @@ class Post {
   }
 
   like() {
-    this._isLiked = !this._isLiked;
-
-    // Incrementa o número de likes
-    if (this._isLiked) {
-      this._numberOfLikes += 1;
-    } else {
-      // Descrementa o número de likes
-      this._numberOfLikes -= 1;
-    }
-
     const postContainer = document.getElementById(this._id);
-    const btnLike = postContainer?.querySelector("#btn-like");
+    if (!postContainer) return;
 
-    if (!btnLike) return;
+    this.updateLikeIcon(postContainer);
+    this._isLiked = !this._isLiked;
+  }
 
-    btnLike.innerHTML = String(this._isLiked);
-    // console.log(btnLike);
+  private updateLikeIcon(postHTML: HTMLElement) {
+    const btnLike = postHTML?.querySelector("#btn-like");
+    const icon = btnLike?.children[0];
+
+    if (!icon) return;
+
+    icon.classList.toggle("fa-heart");
+    icon.classList.toggle("liked");
+    icon.classList.toggle("fa-heart-o");
   }
 
   toHTML() {
@@ -51,39 +50,37 @@ class Post {
     const postHeader = `
       <div class="post-header">
         <div>
-          <img title="Avatar image"
-            src=${this._avatarUrl}>
+          <img title="Avatar image" src=${this._avatarUrl}>
         </div>
         <span>${this._userName}</span>
       </div>
     `;
 
     const postImage = `
-     <div class="post-image">
-        <img title="Post image"
-          src=${this._imageUrl}>
+      <div class="post-image">
+        <img title="Post image" src=${this._imageUrl}>
       </div>
     `;
 
     const postIcons = `
-      <div class="post-icons">
-        <div>
-          <div id="btn-like">
-            <i class="fa fa-heart-o"></i>
-          </div>
-
-          <div>
-            <i class="fa fa-comment-o"></i>
-          </div>
-
-          <div>
-            <i class="fa fa-paper-plane-o"></i>
-          </div>
+    <div class="post-icons">
+      <div>
+        <div id="btn-like">
+          <i class="fa fa-heart-o"></i>
         </div>
 
-        <i class="fa fa-bookmark-o"></i>
+        <div>
+          <i class="fa fa-comment-o"></i>
+        </div>
+
+        <div>
+          <i class="fa fa-paper-plane-o"></i>
+        </div>
       </div>
-    `;
+
+      <i class="fa fa-bookmark-o"></i>
+    </div>
+  `;
 
     postContainer.innerHTML = postHeader;
     postContainer.innerHTML += postImage;
